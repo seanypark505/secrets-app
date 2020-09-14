@@ -11,7 +11,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 const uri = process.env.MONGODB_URI;
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.static('public'));
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
 
 // Set Up Sessions
 app.use(session({
-  secret: 'First session session.',
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false,
 }));
